@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Image;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -39,12 +41,13 @@ Route::get('/', function () {
         echo "<hr>";
         
     }
-    die(); */
+    die();
+    Para poder ver los estilos y compilar vistas vue ejecutar comando 'npm install && npm run dev'  */
     return view('welcome'); 
 }); 
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-//Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/configuracion', [UserController::class, 'config'])->name('user.config');
+Route::post('/user/update', [UserController::class, 'update'])->name('user.update');
