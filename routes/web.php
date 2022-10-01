@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Image;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UserController;
 
 
@@ -51,3 +52,5 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/configuracion', [UserController::class, 'config'])->name('user.config');
 Route::post('/user/update', [UserController::class, 'update'])->name('user.update');
+Route::get('/user/avatar/{filename}', [UserController::class, 'getImage'])->name('user.avatar');
+Route::get('/subir-imagen', [ImageController::class, 'create'])->name('image.create');
