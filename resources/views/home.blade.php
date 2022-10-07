@@ -4,20 +4,43 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+            @include('includes.message')
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+            @foreach($images as $image)
+                <div class="card pub_image">
+                    <div class="card-header">
+                            @if($image->user->image)
+                                <div class="container-avatar"> 
+                                    <img src="{{ route('user.avatar', ['filename'=>$image->user->image]) }}"  />
+                                </div> 
+                            @endif
 
-                    {{ __('You are logged in!') }}
+                            <div class="data-user">{{ $image->user->name.' '.$image->user->surname}}
+                                <span class="nickName"> {{ '| @'.$image->user->nick }} </span>
+                            </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="image-container">
+                            <img src="{{ route('image.file',['filename' => $image->image_path])}}" />
+                        </div>    
+                    </div>
+                    <div class="likes">
+
+                    </div>
+
+                    <div class="description">
+                        <span class="nickName"> {{ '@'.$image->user->nick }} </span> 
+                        <p>{{$image->description}}</p>
+                    </div>
                 </div>
-            </div>
+            @endforeach
+                 <!-- Paginación -->
+        <div class="clearfix"></div>
+        <div>{{$images->links()}}</div>
+        
         </div>
+       
+            
     </div>
 </div>
 @endsection

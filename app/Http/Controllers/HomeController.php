@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Image;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -22,7 +23,11 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        return view('home');
+    {   
+        //$images = Image::all(); Así funcionaría, sólo que no lo ordenaría
+        $images = Image::orderBy('id', 'desc')->Paginate(5);
+        return view('home', [
+            'images' => $images
+        ]);
     }
 }

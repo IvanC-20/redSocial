@@ -3,7 +3,8 @@
     margin-bottom: 15px;
 }
 
-.navbar .container-avatar{
+.navbar .container-avatar,
+.pub_image .container-avatar{
     width: 35px;
     height: 35px;
     border-radius: 900px;
@@ -12,6 +13,51 @@
 
 }
 
-.navbar .container-avatar img{
+.navbar .container-avatar img,
+.pub_image .container-avatar img{
        height: 100%;
 }
+.pub_image{
+    margin-bottom: 25px;
+}
+
+.pub_image .container-avatar{
+    margin-right: 20px;
+    float: left;
+}
+
+.pub_image .data-user{
+    float: left;
+    font-weight: bold;
+}
+
+.pub_image .card-header{
+    display: flex;
+    align-items: center;
+}
+
+.pub_image .nickName{
+    color: gray;
+}
+
+.image-container{
+    height: 400px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.image-container img{
+    width: 100%;
+    height: 100%;
+}
+
+.pub_image .card-body{
+    padding: 0px;
+}
+
+.pub_image .description{
+    padding: 20px;
+}
+
+
+

@@ -52,9 +52,9 @@ return [
             'throw' => false,
         ],
 
-        'image' => [
+        'images' => [
             'driver' => 'local',
-            'root' => storage_path('app/image'),
+            'root' => storage_path('app/images'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
             'throw' => false,
