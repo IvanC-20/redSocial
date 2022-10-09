@@ -31,6 +31,15 @@
     font-weight: bold;
 }
 
+.pub_image .data-user a{
+    color: #444;
+    text-decoration: none;
+}
+
+.pub_image .data-user a:hover{
+    text-decoration: underline;
+}
+
 .pub_image .card-header{
     display: flex;
     align-items: center;
@@ -57,7 +66,20 @@
 
 .pub_image .description{
     padding: 20px;
+    padding-bottom: 0px;
 }
 
+.pub_image .btn-comments{
+    margin: 20px;
+    margin-top: 0px;
+}
 
+.likes{
+    float: left;
+    padding-left: 20px; 
+}
+
+.likes img{
+    width: 30px;    
+}
 
