@@ -30,10 +30,11 @@
                     
                    
                         <div class="description">
-                            <span class="nickName"> {{ '@'.$image->user->nick }} </span> 
+                            <span class="nickName"> {{ '@'.$image->user->nick }} </span>
+                            <span class="nickName date">{{' | '.$image->created_at->diffForHumans()}}</span> 
                             <p>{{$image->description}}</p>
                         </div>
-
+                          
                         <div class="likes">
                             <img src="{{asset('img/hearts-64.png')}}" />
                         </div>
@@ -42,6 +43,8 @@
                                 Comentarios ({{count($image->comments)}})
                             </a>  
                         </div> 
+                        
+                        
                     </div>      
                 </div>
             @endforeach

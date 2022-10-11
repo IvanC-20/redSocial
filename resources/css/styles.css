@@ -37,7 +37,7 @@
 }
 
 .pub_image .data-user a:hover{
-    text-decoration: underline;
+    text-decoration: underline solid 1px;
 }
 
 .pub_image .card-header{
@@ -58,6 +58,10 @@
 .image-container img{
     width: 100%;
     height: 100%;
+}
+
+.image-detail{
+    max-height: 500px;
 }
 
 .pub_image .card-body{
@@ -81,5 +85,9 @@
 
 .likes img{
     width: 30px;    
+}
+
+.pub_image_detail .comments{
+    padding: 20px;
 }
 

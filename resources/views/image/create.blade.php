@@ -31,7 +31,7 @@
                             <label for="description" class="col-md-4 col-form-label text-md-end">Descripción</label>
                             <div class="col-md-6">
                                 
-                                <textarea id="description"  name="description" class="form-control" required></textarea>
+                                <textarea id="description"  name="description" class="form-control {{ $errors->has('description')? 'is-invalid': ''}}" required></textarea>
                                 
                                 @if($errors->has('description'))
                                     <span class="invalid-feedback" role="alert">

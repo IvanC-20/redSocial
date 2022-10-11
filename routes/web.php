@@ -1,11 +1,12 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Image;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserController; 
 
 
 /*
@@ -57,3 +58,4 @@ Route::get('/subir-imagen', [ImageController::class, 'create'])->name('image.cre
 Route::post('/image/save', [ImageController::class, 'save'])->name('image.save');
 Route::get('/image/file/{filename}', [ImageController::class, 'getImage'])->name('image.file');
 Route::get('/imagen/{id}', [ImageController::class, 'detail'])->name('image.detail');
+Route::post('/comment/save', [CommentController::class, 'save'])->name('comment.save');
