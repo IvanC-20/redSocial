@@ -52,8 +52,21 @@
                                 </p>
                                
                                 <button class="btn btn-success" type="submit">Enviar</button>  
-                            </form>  
-
+                            </form> 
+                            <hr> 
+                            @foreach ($image->comments as $comment)
+                                <div class="comments">
+                                    <span class="nickName"> {{ '@'.$comment->user->nick }} </span>
+                                        {{$comment->content}}
+                                    <span class="nickName date">{{' | '.$comment->created_at->diffForHumans().'   '}}</span>
+                                    
+                                    @if(Auth::Check() && ($comment->user_id == Auth::user()->id || $comment->image->user_id == Auth::user()->id))
+                                        <a href="{{route('comment.delete', ['id' => $comment->id])}}" class="btn btn-sm btn-danger">
+                                            Eliminar
+                                        </a> 
+                                    @endif            
+                                </div>
+                            @endforeach
                         </div> 
                     </div>      
                 </div>
