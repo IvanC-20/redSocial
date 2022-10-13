@@ -6,7 +6,9 @@ use App\Models\Image;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\UserController; 
+
 
 
 /*
@@ -60,4 +62,8 @@ Route::get('/image/file/{filename}', [ImageController::class, 'getImage'])->name
 Route::get('/imagen/{id}', [ImageController::class, 'detail'])->name('image.detail');
 Route::post('/comment/save', [CommentController::class, 'save'])->name('comment.save');
 Route::get('/comment/delete/{id}', [CommentController::class, 'delete'])->name('comment.delete');
+Route::get('/like/{image_id}', [LikeController::class, 'like'])->name('like.save');
+Route::get('/dislike/{image_id}', [LikeController::class, 'disLike'])->name('like.delete');
+
+
 
