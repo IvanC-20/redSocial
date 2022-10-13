@@ -83,6 +83,11 @@
     padding-left: 20px; 
 }
 
+.number-likes{
+    color: gray;
+    font-size: 12px;
+}
+
 .likes img{
     width: 30px;    
 }
