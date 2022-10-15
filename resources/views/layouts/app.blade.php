@@ -15,9 +15,10 @@
 
     
     <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <!-- Acá agregué mi propia hoja de estilo (resources/css/styles.css) -->
 
-    @vite(['resources/sass/app.scss', 'resources/css/styles.css', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/css/styles.css', 'resources/js/app.js', 'resources/js/main.js'])
 
     
    
