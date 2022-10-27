@@ -43,15 +43,20 @@
                                     <?php $user_like = true; ?>
                                 @endif
                             @endforeach
-
+                       
                             @if($user_like)
-                                <img src="{{asset('img/hearts-64-red.png')}}" class="btn-dislike" />
+                                <img src="{{asset('img/hearts-64-red.png')}}" data-id="{{$image->id}}" class="btn-dislike" />
+                                
                             @else    
-                                <img src="{{asset('img/hearts-64.png')}}" class="btn-like" /> 
+                                <img src="{{asset('img/hearts-64.png')}}" data-id="{{$image->id}}" class="btn-like" /> 
+                                
                             @endif
 
-                            <span class="number-likes"> {{count($image->likes)}} </span>
+                            <span class="number-likes">{{count($image->likes)}}</span>
+                       
+
                         </div>
+
                         <div class="comments">
                             <a href="" class="btn btn-sm btn-warning btn-comments">
                                 Comentarios ({{count($image->comments)}})

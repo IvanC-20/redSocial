@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Image;
 use App\Models\Like;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -34,8 +35,14 @@ class LikeController extends Controller
             //Guardar 
             $like->save();
 
+            $image = new Image();
+            $image->id = $image_id;
+            $count = count($image->likes);
+
             return Response()->Json([
-                'like' => $like
+                'like' => $like,
+                'count' => $count,
+                'message' => 'Diste like correctamente'
             ]);
 
         }else{
@@ -60,9 +67,13 @@ class LikeController extends Controller
 
             //Eliminar like
             $like->delete();
+            $image = new Image();
+            $image->id = $image_id;
+            $count = count($image->likes);
 
             return Response()->Json([
                 'like' => $like,
+                'count' => $count,
                 'message' => 'Diste dislike correctamente'
             ]);
 
