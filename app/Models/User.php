@@ -47,6 +47,6 @@ class User extends Authenticatable
 
     
     public function images(){
-        return $this->hasMany('App/Image');
+        return $this->hasMany('App\Models\Image');
     }
 }

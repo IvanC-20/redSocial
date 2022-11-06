@@ -16,6 +16,15 @@ class LikeController extends Controller
          $this->middleware('auth');
      }
 
+     public function index(){
+        $user = Auth::user();
+        $likes = Like::where('user_id', $user->id )->orderBy('id', 'desc')
+                              ->paginate(5);
+        return view ('like.index', [
+                    'likes' => $likes 
+        ]);
+    }
+
      public function like($image_id){
 
         //Recoger datos de usuario de la imagen
@@ -35,9 +44,9 @@ class LikeController extends Controller
             //Guardar 
             $like->save();
 
-            $image = new Image();
-            $image->id = $image_id;
-            $count = count($image->likes);
+            //$image = new Image();
+            //$image->id = $image_id;
+            $count = count($like->image->likes); //$image->likes
 
             return Response()->Json([
                 'like' => $like,
@@ -67,9 +76,9 @@ class LikeController extends Controller
 
             //Eliminar like
             $like->delete();
-            $image = new Image();
-            $image->id = $image_id;
-            $count = count($image->likes);
+            //$image = new Image();
+            //$image->id = $image_id;
+            $count = count($like->image->likes);
 
             return Response()->Json([
                 'like' => $like,
@@ -84,4 +93,6 @@ class LikeController extends Controller
         }
 
     }
+
+    
 }

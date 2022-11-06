@@ -64,6 +64,8 @@ Route::post('/comment/save', [CommentController::class, 'save'])->name('comment.
 Route::get('/comment/delete/{id}', [CommentController::class, 'delete'])->name('comment.delete');
 Route::get('/like/{image_id}', [LikeController::class, 'like'])->name('like.save');
 Route::get('/dislike/{image_id}', [LikeController::class, 'disLike'])->name('like.delete');
+Route::get('/likes', [LikeController::class, 'index'])->name('like.index');
+Route::get('/perfil/{id}', [UserController::class, 'profile'])->name('user.profile');
 
 
 
