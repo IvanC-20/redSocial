@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Comment;
+use App\Models\Like;
 
 class ImageController extends Controller
 {
@@ -67,6 +69,47 @@ class ImageController extends Controller
             'image' => $image
         ]);
 
+    }
 
+    public function delete($id){
+        $user = Auth::user();
+        $image = Image::find($id);
+        //debo eliminar registros asociados en comentarios y likes
+        // para poder eliminar la imagen ya que por integridad referencial no me dejaría
+        $comments = Comment::where('image_id', $id)->get();
+        $likes = Like::where('image_id', $id)->get();
+
+        if($user && $image->user->id == $user->id){
+
+            // Eliminar comentarios
+            if($comments && count($comments) >= 1){
+                foreach($comments as $comment){
+                    $comment->delete();
+                }
+            }
+            
+            //Eliminar likes
+            if($likes && count($likes) >= 1){
+                foreach($likes as $like){
+                    $like->delete();
+                }
+            }
+
+            //Eliminar archivos de imagen en el storage
+            Storage::disk('images')->delete($image->image_path);
+            
+            
+            //Eliminar registro de la imagen
+            $image->delete();
+            $message = array('message' => 'La imagen se ha borrado correctamente.');
+        }else{
+            $message = array('message' => 'La imagen no se ha borrado.');
+        }
+        return redirect()->route('home')->with($message);
+
+    }
+
+    public function edit($id){
+        
     }
 }

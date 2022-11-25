@@ -52,6 +52,45 @@
                             
                         </div>
 
+                        @if(Auth::user() && Auth::user()->id == $image->user->id)
+                            <div class="actions">
+                                <a href="" class="btn btn-sm btn-primary">Actualizar</a>
+                            <!--    <a href="{{ route('image.delete', ['id' => $image->id]) }}" class="btn btn-sm btn-danger">Borrar</a> -->
+
+                                <!-- Button to Open the Modal -->
+                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">
+                                    Eliminar
+                                </button>
+                            
+                                <!-- The Modal -->
+                                <div class="modal" id="myModal">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                        <h4 class="modal-title">¿Estás seguro?</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                        Si eliminas esta imagen nunca podrás recuperarla ¿estás seguro de querer borrarla?
+                                        </div>
+                                
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cancelar</button>
+                                        <a href="{{ route('image.delete', ['id' => $image->id]) }}" class="btn btn-danger">Borrar definitivamente</a>
+                                        </div>
+                                
+                                    </div>
+                                    </div>
+                                </div>
+
+                            </div>    
+                        @endif
+
                         <div class="clearfix"></div>
                         <div class="comments">
                             <h2>Comentarios ({{count($image->comments)}}) </h2>
