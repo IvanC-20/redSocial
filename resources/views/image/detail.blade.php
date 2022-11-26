@@ -54,8 +54,8 @@
 
                         @if(Auth::user() && Auth::user()->id == $image->user->id)
                             <div class="actions">
-                                <a href="" class="btn btn-sm btn-primary">Actualizar</a>
-                            <!--    <a href="{{ route('image.delete', ['id' => $image->id]) }}" class="btn btn-sm btn-danger">Borrar</a> -->
+                                <a href="{{ route('image.edit', ['id' => $image->id]) }}" class="btn btn-sm btn-primary">Actualizar</a>
+                            <!--    <a href="{ route('image.delete', ['id' => $image->id]) }}" class="btn btn-sm btn-danger">Borrar</a> -->
 
                                 <!-- Button to Open the Modal -->
                                 <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">
